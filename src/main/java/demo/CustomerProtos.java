@@ -6,12 +6,18 @@ package demo;
 public final class CustomerProtos {
   private CustomerProtos() {}
   public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
+      com.google.protobuf.ExtensionRegistryLite registry) {
   }
-  public interface CustomerOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
 
-    // required int32 id = 1;
+  public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
+  }
+  public interface CustomerOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:demo.Customer)
+      com.google.protobuf.MessageOrBuilder {
+
     /**
      * <code>required int32 id = 1;</code>
      */
@@ -21,7 +27,6 @@ public final class CustomerProtos {
      */
     int getId();
 
-    // required string firstName = 2;
     /**
      * <code>required string firstName = 2;</code>
      */
@@ -36,7 +41,6 @@ public final class CustomerProtos {
     com.google.protobuf.ByteString
         getFirstNameBytes();
 
-    // required string lastName = 3;
     /**
      * <code>required string lastName = 3;</code>
      */
@@ -51,7 +55,6 @@ public final class CustomerProtos {
     com.google.protobuf.ByteString
         getLastNameBytes();
 
-    // repeated .demo.Customer.EmailAddress email = 5;
     /**
      * <code>repeated .demo.Customer.EmailAddress email = 5;</code>
      */
@@ -79,36 +82,31 @@ public final class CustomerProtos {
   /**
    * Protobuf type {@code demo.Customer}
    */
-  public static final class Customer extends
-      com.google.protobuf.GeneratedMessage
-      implements CustomerOrBuilder {
+  public  static final class Customer extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:demo.Customer)
+      CustomerOrBuilder {
     // Use Customer.newBuilder() to construct.
-    private Customer(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Customer(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Customer(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Customer defaultInstance;
-    public static Customer getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public Customer getDefaultInstanceForType() {
-      return defaultInstance;
+    private Customer() {
+      id_ = 0;
+      firstName_ = "";
+      lastName_ = "";
+      email_ = java.util.Collections.emptyList();
     }
 
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
+    getUnknownFields() {
       return this.unknownFields;
     }
     private Customer(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -133,13 +131,15 @@ public final class CustomerProtos {
               break;
             }
             case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000002;
-              firstName_ = input.readBytes();
+              firstName_ = bs;
               break;
             }
             case 26: {
+              com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000004;
-              lastName_ = input.readBytes();
+              lastName_ = bs;
               break;
             }
             case 42: {
@@ -147,7 +147,8 @@ public final class CustomerProtos {
                 email_ = new java.util.ArrayList<demo.CustomerProtos.Customer.EmailAddress>();
                 mutable_bitField0_ |= 0x00000008;
               }
-              email_.add(input.readMessage(demo.CustomerProtos.Customer.EmailAddress.PARSER, extensionRegistry));
+              email_.add(
+                  input.readMessage(demo.CustomerProtos.Customer.EmailAddress.PARSER, extensionRegistry));
               break;
             }
           }
@@ -156,7 +157,7 @@ public final class CustomerProtos {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
           email_ = java.util.Collections.unmodifiableList(email_);
@@ -170,26 +171,11 @@ public final class CustomerProtos {
       return demo.CustomerProtos.internal_static_demo_Customer_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return demo.CustomerProtos.internal_static_demo_Customer_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               demo.CustomerProtos.Customer.class, demo.CustomerProtos.Customer.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<Customer> PARSER =
-        new com.google.protobuf.AbstractParser<Customer>() {
-      public Customer parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Customer(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Customer> getParserForType() {
-      return PARSER;
     }
 
     /**
@@ -198,31 +184,41 @@ public final class CustomerProtos {
     public enum EmailType
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
-       * <code>PRIVATE = 0;</code>
+       * <code>PRIVATE = 1;</code>
        */
-      PRIVATE(0, 0),
+      PRIVATE(1),
       /**
-       * <code>PROFESSIONAL = 1;</code>
+       * <code>PROFESSIONAL = 2;</code>
        */
-      PROFESSIONAL(1, 1),
+      PROFESSIONAL(2),
       ;
 
       /**
-       * <code>PRIVATE = 0;</code>
+       * <code>PRIVATE = 1;</code>
        */
-      public static final int PRIVATE_VALUE = 0;
+      public static final int PRIVATE_VALUE = 1;
       /**
-       * <code>PROFESSIONAL = 1;</code>
+       * <code>PROFESSIONAL = 2;</code>
        */
-      public static final int PROFESSIONAL_VALUE = 1;
+      public static final int PROFESSIONAL_VALUE = 2;
 
 
-      public final int getNumber() { return value; }
+      public final int getNumber() {
+        return value;
+      }
 
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
       public static EmailType valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static EmailType forNumber(int value) {
         switch (value) {
-          case 0: return PRIVATE;
-          case 1: return PROFESSIONAL;
+          case 1: return PRIVATE;
+          case 2: return PROFESSIONAL;
           default: return null;
         }
       }
@@ -231,17 +227,17 @@ public final class CustomerProtos {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static com.google.protobuf.Internal.EnumLiteMap<EmailType>
-          internalValueMap =
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          EmailType> internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<EmailType>() {
               public EmailType findValueByNumber(int number) {
-                return EmailType.valueOf(number);
+                return EmailType.forNumber(number);
               }
             };
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
+        return getDescriptor().getValues().get(ordinal());
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptorForType() {
@@ -263,21 +259,19 @@ public final class CustomerProtos {
         return VALUES[desc.getIndex()];
       }
 
-      private final int index;
       private final int value;
 
-      private EmailType(int index, int value) {
-        this.index = index;
+      private EmailType(int value) {
         this.value = value;
       }
 
       // @@protoc_insertion_point(enum_scope:demo.Customer.EmailType)
     }
 
-    public interface EmailAddressOrBuilder
-        extends com.google.protobuf.MessageOrBuilder {
+    public interface EmailAddressOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:demo.Customer.EmailAddress)
+        com.google.protobuf.MessageOrBuilder {
 
-      // required string email = 1;
       /**
        * <code>required string email = 1;</code>
        */
@@ -292,7 +286,6 @@ public final class CustomerProtos {
       com.google.protobuf.ByteString
           getEmailBytes();
 
-      // optional .demo.Customer.EmailType type = 2 [default = PROFESSIONAL];
       /**
        * <code>optional .demo.Customer.EmailType type = 2 [default = PROFESSIONAL];</code>
        */
@@ -305,36 +298,29 @@ public final class CustomerProtos {
     /**
      * Protobuf type {@code demo.Customer.EmailAddress}
      */
-    public static final class EmailAddress extends
-        com.google.protobuf.GeneratedMessage
-        implements EmailAddressOrBuilder {
+    public  static final class EmailAddress extends
+        com.google.protobuf.GeneratedMessageV3 implements
+        // @@protoc_insertion_point(message_implements:demo.Customer.EmailAddress)
+        EmailAddressOrBuilder {
       // Use EmailAddress.newBuilder() to construct.
-      private EmailAddress(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      private EmailAddress(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
         super(builder);
-        this.unknownFields = builder.getUnknownFields();
       }
-      private EmailAddress(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-      private static final EmailAddress defaultInstance;
-      public static EmailAddress getDefaultInstance() {
-        return defaultInstance;
+      private EmailAddress() {
+        email_ = "";
+        type_ = 2;
       }
 
-      public EmailAddress getDefaultInstanceForType() {
-        return defaultInstance;
-      }
-
-      private final com.google.protobuf.UnknownFieldSet unknownFields;
       @java.lang.Override
       public final com.google.protobuf.UnknownFieldSet
-          getUnknownFields() {
+      getUnknownFields() {
         return this.unknownFields;
       }
       private EmailAddress(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        initFields();
+        this();
         int mutable_bitField0_ = 0;
         com.google.protobuf.UnknownFieldSet.Builder unknownFields =
             com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -354,8 +340,9 @@ public final class CustomerProtos {
                 break;
               }
               case 10: {
+                com.google.protobuf.ByteString bs = input.readBytes();
                 bitField0_ |= 0x00000001;
-                email_ = input.readBytes();
+                email_ = bs;
                 break;
               }
               case 16: {
@@ -365,7 +352,7 @@ public final class CustomerProtos {
                   unknownFields.mergeVarintField(2, rawValue);
                 } else {
                   bitField0_ |= 0x00000002;
-                  type_ = value;
+                  type_ = rawValue;
                 }
                 break;
               }
@@ -375,7 +362,7 @@ public final class CustomerProtos {
           throw e.setUnfinishedMessage(this);
         } catch (java.io.IOException e) {
           throw new com.google.protobuf.InvalidProtocolBufferException(
-              e.getMessage()).setUnfinishedMessage(this);
+              e).setUnfinishedMessage(this);
         } finally {
           this.unknownFields = unknownFields.build();
           makeExtensionsImmutable();
@@ -386,32 +373,16 @@ public final class CustomerProtos {
         return demo.CustomerProtos.internal_static_demo_Customer_EmailAddress_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return demo.CustomerProtos.internal_static_demo_Customer_EmailAddress_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 demo.CustomerProtos.Customer.EmailAddress.class, demo.CustomerProtos.Customer.EmailAddress.Builder.class);
       }
 
-      public static com.google.protobuf.Parser<EmailAddress> PARSER =
-          new com.google.protobuf.AbstractParser<EmailAddress>() {
-        public EmailAddress parsePartialFrom(
-            com.google.protobuf.CodedInputStream input,
-            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-            throws com.google.protobuf.InvalidProtocolBufferException {
-          return new EmailAddress(input, extensionRegistry);
-        }
-      };
-
-      @java.lang.Override
-      public com.google.protobuf.Parser<EmailAddress> getParserForType() {
-        return PARSER;
-      }
-
       private int bitField0_;
-      // required string email = 1;
       public static final int EMAIL_FIELD_NUMBER = 1;
-      private java.lang.Object email_;
+      private volatile java.lang.Object email_;
       /**
        * <code>required string email = 1;</code>
        */
@@ -452,9 +423,8 @@ public final class CustomerProtos {
         }
       }
 
-      // optional .demo.Customer.EmailType type = 2 [default = PROFESSIONAL];
       public static final int TYPE_FIELD_NUMBER = 2;
-      private demo.CustomerProtos.Customer.EmailType type_;
+      private int type_;
       /**
        * <code>optional .demo.Customer.EmailType type = 2 [default = PROFESSIONAL];</code>
        */
@@ -465,17 +435,15 @@ public final class CustomerProtos {
        * <code>optional .demo.Customer.EmailType type = 2 [default = PROFESSIONAL];</code>
        */
       public demo.CustomerProtos.Customer.EmailType getType() {
-        return type_;
+        demo.CustomerProtos.Customer.EmailType result = demo.CustomerProtos.Customer.EmailType.valueOf(type_);
+        return result == null ? demo.CustomerProtos.Customer.EmailType.PROFESSIONAL : result;
       }
 
-      private void initFields() {
-        email_ = "";
-        type_ = demo.CustomerProtos.Customer.EmailType.PROFESSIONAL;
-      }
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
         byte isInitialized = memoizedIsInitialized;
-        if (isInitialized != -1) return isInitialized == 1;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
 
         if (!hasEmail()) {
           memoizedIsInitialized = 0;
@@ -487,40 +455,75 @@ public final class CustomerProtos {
 
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        getSerializedSize();
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          output.writeBytes(1, getEmailBytes());
+          com.google.protobuf.GeneratedMessageV3.writeString(output, 1, email_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
-          output.writeEnum(2, type_.getNumber());
+          output.writeEnum(2, type_);
         }
-        getUnknownFields().writeTo(output);
+        unknownFields.writeTo(output);
       }
 
-      private int memoizedSerializedSize = -1;
       public int getSerializedSize() {
-        int size = memoizedSerializedSize;
+        int size = memoizedSize;
         if (size != -1) return size;
 
         size = 0;
         if (((bitField0_ & 0x00000001) == 0x00000001)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeBytesSize(1, getEmailBytes());
+          size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, email_);
         }
         if (((bitField0_ & 0x00000002) == 0x00000002)) {
           size += com.google.protobuf.CodedOutputStream
-            .computeEnumSize(2, type_.getNumber());
+            .computeEnumSize(2, type_);
         }
-        size += getUnknownFields().getSerializedSize();
-        memoizedSerializedSize = size;
+        size += unknownFields.getSerializedSize();
+        memoizedSize = size;
         return size;
       }
 
       private static final long serialVersionUID = 0L;
       @java.lang.Override
-      protected java.lang.Object writeReplace()
-          throws java.io.ObjectStreamException {
-        return super.writeReplace();
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof demo.CustomerProtos.Customer.EmailAddress)) {
+          return super.equals(obj);
+        }
+        demo.CustomerProtos.Customer.EmailAddress other = (demo.CustomerProtos.Customer.EmailAddress) obj;
+
+        boolean result = true;
+        result = result && (hasEmail() == other.hasEmail());
+        if (hasEmail()) {
+          result = result && getEmail()
+              .equals(other.getEmail());
+        }
+        result = result && (hasType() == other.hasType());
+        if (hasType()) {
+          result = result && type_ == other.type_;
+        }
+        result = result && unknownFields.equals(other.unknownFields);
+        return result;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptorForType().hashCode();
+        if (hasEmail()) {
+          hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+          hash = (53 * hash) + getEmail().hashCode();
+        }
+        if (hasType()) {
+          hash = (37 * hash) + TYPE_FIELD_NUMBER;
+          hash = (53 * hash) + type_;
+        }
+        hash = (29 * hash) + unknownFields.hashCode();
+        memoizedHashCode = hash;
+        return hash;
       }
 
       public static demo.CustomerProtos.Customer.EmailAddress parseFrom(
@@ -546,46 +549,57 @@ public final class CustomerProtos {
       }
       public static demo.CustomerProtos.Customer.EmailAddress parseFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
       }
       public static demo.CustomerProtos.Customer.EmailAddress parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
       }
       public static demo.CustomerProtos.Customer.EmailAddress parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input);
       }
       public static demo.CustomerProtos.Customer.EmailAddress parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
       public static demo.CustomerProtos.Customer.EmailAddress parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
-        return PARSER.parseFrom(input);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input);
       }
       public static demo.CustomerProtos.Customer.EmailAddress parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        return PARSER.parseFrom(input, extensionRegistry);
+        return com.google.protobuf.GeneratedMessageV3
+            .parseWithIOException(PARSER, input, extensionRegistry);
       }
 
-      public static Builder newBuilder() { return Builder.create(); }
       public Builder newBuilderForType() { return newBuilder(); }
-      public static Builder newBuilder(demo.CustomerProtos.Customer.EmailAddress prototype) {
-        return newBuilder().mergeFrom(prototype);
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
       }
-      public Builder toBuilder() { return newBuilder(this); }
+      public static Builder newBuilder(demo.CustomerProtos.Customer.EmailAddress prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
 
       @java.lang.Override
       protected Builder newBuilderForType(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         Builder builder = new Builder(parent);
         return builder;
       }
@@ -593,14 +607,15 @@ public final class CustomerProtos {
        * Protobuf type {@code demo.Customer.EmailAddress}
        */
       public static final class Builder extends
-          com.google.protobuf.GeneratedMessage.Builder<Builder>
-         implements demo.CustomerProtos.Customer.EmailAddressOrBuilder {
+          com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:demo.Customer.EmailAddress)
+          demo.CustomerProtos.Customer.EmailAddressOrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
           return demo.CustomerProtos.internal_static_demo_Customer_EmailAddress_descriptor;
         }
 
-        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
             internalGetFieldAccessorTable() {
           return demo.CustomerProtos.internal_static_demo_Customer_EmailAddress_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
@@ -613,29 +628,22 @@ public final class CustomerProtos {
         }
 
         private Builder(
-            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
           super(parent);
           maybeForceBuilderInitialization();
         }
         private void maybeForceBuilderInitialization() {
-          if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          if (com.google.protobuf.GeneratedMessageV3
+                  .alwaysUseFieldBuilders) {
           }
         }
-        private static Builder create() {
-          return new Builder();
-        }
-
         public Builder clear() {
           super.clear();
           email_ = "";
           bitField0_ = (bitField0_ & ~0x00000001);
-          type_ = demo.CustomerProtos.Customer.EmailType.PROFESSIONAL;
+          type_ = 2;
           bitField0_ = (bitField0_ & ~0x00000002);
           return this;
-        }
-
-        public Builder clone() {
-          return create().mergeFrom(buildPartial());
         }
 
         public com.google.protobuf.Descriptors.Descriptor
@@ -672,6 +680,32 @@ public final class CustomerProtos {
           return result;
         }
 
+        public Builder clone() {
+          return (Builder) super.clone();
+        }
+        public Builder setField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            Object value) {
+          return (Builder) super.setField(field, value);
+        }
+        public Builder clearField(
+            com.google.protobuf.Descriptors.FieldDescriptor field) {
+          return (Builder) super.clearField(field);
+        }
+        public Builder clearOneof(
+            com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+          return (Builder) super.clearOneof(oneof);
+        }
+        public Builder setRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            int index, Object value) {
+          return (Builder) super.setRepeatedField(field, index, value);
+        }
+        public Builder addRepeatedField(
+            com.google.protobuf.Descriptors.FieldDescriptor field,
+            Object value) {
+          return (Builder) super.addRepeatedField(field, value);
+        }
         public Builder mergeFrom(com.google.protobuf.Message other) {
           if (other instanceof demo.CustomerProtos.Customer.EmailAddress) {
             return mergeFrom((demo.CustomerProtos.Customer.EmailAddress)other);
@@ -691,13 +725,13 @@ public final class CustomerProtos {
           if (other.hasType()) {
             setType(other.getType());
           }
-          this.mergeUnknownFields(other.getUnknownFields());
+          this.mergeUnknownFields(other.unknownFields);
+          onChanged();
           return this;
         }
 
         public final boolean isInitialized() {
           if (!hasEmail()) {
-            
             return false;
           }
           return true;
@@ -712,7 +746,7 @@ public final class CustomerProtos {
             parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
           } catch (com.google.protobuf.InvalidProtocolBufferException e) {
             parsedMessage = (demo.CustomerProtos.Customer.EmailAddress) e.getUnfinishedMessage();
-            throw e;
+            throw e.unwrapIOException();
           } finally {
             if (parsedMessage != null) {
               mergeFrom(parsedMessage);
@@ -722,7 +756,6 @@ public final class CustomerProtos {
         }
         private int bitField0_;
 
-        // required string email = 1;
         private java.lang.Object email_ = "";
         /**
          * <code>required string email = 1;</code>
@@ -736,9 +769,12 @@ public final class CustomerProtos {
         public java.lang.String getEmail() {
           java.lang.Object ref = email_;
           if (!(ref instanceof java.lang.String)) {
-            java.lang.String s = ((com.google.protobuf.ByteString) ref)
-                .toStringUtf8();
-            email_ = s;
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              email_ = s;
+            }
             return s;
           } else {
             return (java.lang.String) ref;
@@ -796,8 +832,7 @@ public final class CustomerProtos {
           return this;
         }
 
-        // optional .demo.Customer.EmailType type = 2 [default = PROFESSIONAL];
-        private demo.CustomerProtos.Customer.EmailType type_ = demo.CustomerProtos.Customer.EmailType.PROFESSIONAL;
+        private int type_ = 2;
         /**
          * <code>optional .demo.Customer.EmailType type = 2 [default = PROFESSIONAL];</code>
          */
@@ -808,7 +843,8 @@ public final class CustomerProtos {
          * <code>optional .demo.Customer.EmailType type = 2 [default = PROFESSIONAL];</code>
          */
         public demo.CustomerProtos.Customer.EmailType getType() {
-          return type_;
+          demo.CustomerProtos.Customer.EmailType result = demo.CustomerProtos.Customer.EmailType.valueOf(type_);
+          return result == null ? demo.CustomerProtos.Customer.EmailType.PROFESSIONAL : result;
         }
         /**
          * <code>optional .demo.Customer.EmailType type = 2 [default = PROFESSIONAL];</code>
@@ -818,7 +854,7 @@ public final class CustomerProtos {
             throw new NullPointerException();
           }
           bitField0_ |= 0x00000002;
-          type_ = value;
+          type_ = value.getNumber();
           onChanged();
           return this;
         }
@@ -827,24 +863,60 @@ public final class CustomerProtos {
          */
         public Builder clearType() {
           bitField0_ = (bitField0_ & ~0x00000002);
-          type_ = demo.CustomerProtos.Customer.EmailType.PROFESSIONAL;
+          type_ = 2;
           onChanged();
           return this;
         }
+        public final Builder setUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.setUnknownFields(unknownFields);
+        }
+
+        public final Builder mergeUnknownFields(
+            final com.google.protobuf.UnknownFieldSet unknownFields) {
+          return super.mergeUnknownFields(unknownFields);
+        }
+
 
         // @@protoc_insertion_point(builder_scope:demo.Customer.EmailAddress)
       }
 
+      // @@protoc_insertion_point(class_scope:demo.Customer.EmailAddress)
+      private static final demo.CustomerProtos.Customer.EmailAddress DEFAULT_INSTANCE;
       static {
-        defaultInstance = new EmailAddress(true);
-        defaultInstance.initFields();
+        DEFAULT_INSTANCE = new demo.CustomerProtos.Customer.EmailAddress();
       }
 
-      // @@protoc_insertion_point(class_scope:demo.Customer.EmailAddress)
+      public static demo.CustomerProtos.Customer.EmailAddress getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      @java.lang.Deprecated public static final com.google.protobuf.Parser<EmailAddress>
+          PARSER = new com.google.protobuf.AbstractParser<EmailAddress>() {
+        public EmailAddress parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            return new EmailAddress(input, extensionRegistry);
+        }
+      };
+
+      public static com.google.protobuf.Parser<EmailAddress> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<EmailAddress> getParserForType() {
+        return PARSER;
+      }
+
+      public demo.CustomerProtos.Customer.EmailAddress getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
     }
 
     private int bitField0_;
-    // required int32 id = 1;
     public static final int ID_FIELD_NUMBER = 1;
     private int id_;
     /**
@@ -860,9 +932,8 @@ public final class CustomerProtos {
       return id_;
     }
 
-    // required string firstName = 2;
     public static final int FIRSTNAME_FIELD_NUMBER = 2;
-    private java.lang.Object firstName_;
+    private volatile java.lang.Object firstName_;
     /**
      * <code>required string firstName = 2;</code>
      */
@@ -903,9 +974,8 @@ public final class CustomerProtos {
       }
     }
 
-    // required string lastName = 3;
     public static final int LASTNAME_FIELD_NUMBER = 3;
-    private java.lang.Object lastName_;
+    private volatile java.lang.Object lastName_;
     /**
      * <code>required string lastName = 3;</code>
      */
@@ -946,7 +1016,6 @@ public final class CustomerProtos {
       }
     }
 
-    // repeated .demo.Customer.EmailAddress email = 5;
     public static final int EMAIL_FIELD_NUMBER = 5;
     private java.util.List<demo.CustomerProtos.Customer.EmailAddress> email_;
     /**
@@ -982,16 +1051,11 @@ public final class CustomerProtos {
       return email_.get(index);
     }
 
-    private void initFields() {
-      id_ = 0;
-      firstName_ = "";
-      lastName_ = "";
-      email_ = java.util.Collections.emptyList();
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       if (!hasId()) {
         memoizedIsInitialized = 0;
@@ -1017,25 +1081,23 @@ public final class CustomerProtos {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeInt32(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getFirstNameBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, firstName_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getLastNameBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, lastName_);
       }
       for (int i = 0; i < email_.size(); i++) {
         output.writeMessage(5, email_.get(i));
       }
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
@@ -1044,27 +1106,79 @@ public final class CustomerProtos {
           .computeInt32Size(1, id_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getFirstNameBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, firstName_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getLastNameBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, lastName_);
       }
       for (int i = 0; i < email_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, email_.get(i));
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof demo.CustomerProtos.Customer)) {
+        return super.equals(obj);
+      }
+      demo.CustomerProtos.Customer other = (demo.CustomerProtos.Customer) obj;
+
+      boolean result = true;
+      result = result && (hasId() == other.hasId());
+      if (hasId()) {
+        result = result && (getId()
+            == other.getId());
+      }
+      result = result && (hasFirstName() == other.hasFirstName());
+      if (hasFirstName()) {
+        result = result && getFirstName()
+            .equals(other.getFirstName());
+      }
+      result = result && (hasLastName() == other.hasLastName());
+      if (hasLastName()) {
+        result = result && getLastName()
+            .equals(other.getLastName());
+      }
+      result = result && getEmailList()
+          .equals(other.getEmailList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasId()) {
+        hash = (37 * hash) + ID_FIELD_NUMBER;
+        hash = (53 * hash) + getId();
+      }
+      if (hasFirstName()) {
+        hash = (37 * hash) + FIRSTNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getFirstName().hashCode();
+      }
+      if (hasLastName()) {
+        hash = (37 * hash) + LASTNAME_FIELD_NUMBER;
+        hash = (53 * hash) + getLastName().hashCode();
+      }
+      if (getEmailCount() > 0) {
+        hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+        hash = (53 * hash) + getEmailList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
     }
 
     public static demo.CustomerProtos.Customer parseFrom(
@@ -1090,46 +1204,57 @@ public final class CustomerProtos {
     }
     public static demo.CustomerProtos.Customer parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static demo.CustomerProtos.Customer parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static demo.CustomerProtos.Customer parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static demo.CustomerProtos.Customer parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static demo.CustomerProtos.Customer parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static demo.CustomerProtos.Customer parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(demo.CustomerProtos.Customer prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(demo.CustomerProtos.Customer prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1137,14 +1262,15 @@ public final class CustomerProtos {
      * Protobuf type {@code demo.Customer}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements demo.CustomerProtos.CustomerOrBuilder {
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:demo.Customer)
+        demo.CustomerProtos.CustomerOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return demo.CustomerProtos.internal_static_demo_Customer_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return demo.CustomerProtos.internal_static_demo_Customer_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1157,19 +1283,16 @@ public final class CustomerProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getEmailFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         id_ = 0;
@@ -1185,10 +1308,6 @@ public final class CustomerProtos {
           emailBuilder_.clear();
         }
         return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -1238,6 +1357,32 @@ public final class CustomerProtos {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof demo.CustomerProtos.Customer) {
           return mergeFrom((demo.CustomerProtos.Customer)other);
@@ -1281,33 +1426,30 @@ public final class CustomerProtos {
               email_ = other.email_;
               bitField0_ = (bitField0_ & ~0x00000008);
               emailBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getEmailFieldBuilder() : null;
             } else {
               emailBuilder_.addAllMessages(other.email_);
             }
           }
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasId()) {
-          
           return false;
         }
         if (!hasFirstName()) {
-          
           return false;
         }
         if (!hasLastName()) {
-          
           return false;
         }
         for (int i = 0; i < getEmailCount(); i++) {
           if (!getEmail(i).isInitialized()) {
-            
             return false;
           }
         }
@@ -1323,7 +1465,7 @@ public final class CustomerProtos {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (demo.CustomerProtos.Customer) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -1333,7 +1475,6 @@ public final class CustomerProtos {
       }
       private int bitField0_;
 
-      // required int32 id = 1;
       private int id_ ;
       /**
        * <code>required int32 id = 1;</code>
@@ -1366,7 +1507,6 @@ public final class CustomerProtos {
         return this;
       }
 
-      // required string firstName = 2;
       private java.lang.Object firstName_ = "";
       /**
        * <code>required string firstName = 2;</code>
@@ -1380,9 +1520,12 @@ public final class CustomerProtos {
       public java.lang.String getFirstName() {
         java.lang.Object ref = firstName_;
         if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          firstName_ = s;
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            firstName_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -1440,7 +1583,6 @@ public final class CustomerProtos {
         return this;
       }
 
-      // required string lastName = 3;
       private java.lang.Object lastName_ = "";
       /**
        * <code>required string lastName = 3;</code>
@@ -1454,9 +1596,12 @@ public final class CustomerProtos {
       public java.lang.String getLastName() {
         java.lang.Object ref = lastName_;
         if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          lastName_ = s;
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            lastName_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
@@ -1514,7 +1659,6 @@ public final class CustomerProtos {
         return this;
       }
 
-      // repeated .demo.Customer.EmailAddress email = 5;
       private java.util.List<demo.CustomerProtos.Customer.EmailAddress> email_ =
         java.util.Collections.emptyList();
       private void ensureEmailIsMutable() {
@@ -1524,7 +1668,7 @@ public final class CustomerProtos {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           demo.CustomerProtos.Customer.EmailAddress, demo.CustomerProtos.Customer.EmailAddress.Builder, demo.CustomerProtos.Customer.EmailAddressOrBuilder> emailBuilder_;
 
       /**
@@ -1656,7 +1800,8 @@ public final class CustomerProtos {
           java.lang.Iterable<? extends demo.CustomerProtos.Customer.EmailAddress> values) {
         if (emailBuilder_ == null) {
           ensureEmailIsMutable();
-          super.addAll(values, email_);
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, email_);
           onChanged();
         } else {
           emailBuilder_.addAllMessages(values);
@@ -1739,11 +1884,11 @@ public final class CustomerProtos {
            getEmailBuilderList() {
         return getEmailFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           demo.CustomerProtos.Customer.EmailAddress, demo.CustomerProtos.Customer.EmailAddress.Builder, demo.CustomerProtos.Customer.EmailAddressOrBuilder> 
           getEmailFieldBuilder() {
         if (emailBuilder_ == null) {
-          emailBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          emailBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               demo.CustomerProtos.Customer.EmailAddress, demo.CustomerProtos.Customer.EmailAddress.Builder, demo.CustomerProtos.Customer.EmailAddressOrBuilder>(
                   email_,
                   ((bitField0_ & 0x00000008) == 0x00000008),
@@ -1753,57 +1898,93 @@ public final class CustomerProtos {
         }
         return emailBuilder_;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
 
       // @@protoc_insertion_point(builder_scope:demo.Customer)
     }
 
+    // @@protoc_insertion_point(class_scope:demo.Customer)
+    private static final demo.CustomerProtos.Customer DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Customer(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new demo.CustomerProtos.Customer();
     }
 
-    // @@protoc_insertion_point(class_scope:demo.Customer)
+    public static demo.CustomerProtos.Customer getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Customer>
+        PARSER = new com.google.protobuf.AbstractParser<Customer>() {
+      public Customer parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Customer(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Customer> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Customer> getParserForType() {
+      return PARSER;
+    }
+
+    public demo.CustomerProtos.Customer getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
-  public interface OrganizationOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
+  public interface OrganizationOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:demo.Organization)
+      com.google.protobuf.MessageOrBuilder {
 
-    // required string name = 4;
     /**
-     * <code>required string name = 4;</code>
+     * <code>required string name = 1;</code>
      */
     boolean hasName();
     /**
-     * <code>required string name = 4;</code>
+     * <code>required string name = 1;</code>
      */
     java.lang.String getName();
     /**
-     * <code>required string name = 4;</code>
+     * <code>required string name = 1;</code>
      */
     com.google.protobuf.ByteString
         getNameBytes();
 
-    // repeated .demo.Customer customer = 1;
     /**
-     * <code>repeated .demo.Customer customer = 1;</code>
+     * <code>repeated .demo.Customer customer = 2;</code>
      */
     java.util.List<demo.CustomerProtos.Customer> 
         getCustomerList();
     /**
-     * <code>repeated .demo.Customer customer = 1;</code>
+     * <code>repeated .demo.Customer customer = 2;</code>
      */
     demo.CustomerProtos.Customer getCustomer(int index);
     /**
-     * <code>repeated .demo.Customer customer = 1;</code>
+     * <code>repeated .demo.Customer customer = 2;</code>
      */
     int getCustomerCount();
     /**
-     * <code>repeated .demo.Customer customer = 1;</code>
+     * <code>repeated .demo.Customer customer = 2;</code>
      */
     java.util.List<? extends demo.CustomerProtos.CustomerOrBuilder> 
         getCustomerOrBuilderList();
     /**
-     * <code>repeated .demo.Customer customer = 1;</code>
+     * <code>repeated .demo.Customer customer = 2;</code>
      */
     demo.CustomerProtos.CustomerOrBuilder getCustomerOrBuilder(
         int index);
@@ -1811,36 +1992,29 @@ public final class CustomerProtos {
   /**
    * Protobuf type {@code demo.Organization}
    */
-  public static final class Organization extends
-      com.google.protobuf.GeneratedMessage
-      implements OrganizationOrBuilder {
+  public  static final class Organization extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:demo.Organization)
+      OrganizationOrBuilder {
     // Use Organization.newBuilder() to construct.
-    private Organization(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private Organization(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private Organization(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Organization defaultInstance;
-    public static Organization getDefaultInstance() {
-      return defaultInstance;
+    private Organization() {
+      name_ = "";
+      customer_ = java.util.Collections.emptyList();
     }
 
-    public Organization getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
+    getUnknownFields() {
       return this.unknownFields;
     }
     private Organization(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -1860,16 +2034,18 @@ public final class CustomerProtos {
               break;
             }
             case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              name_ = bs;
+              break;
+            }
+            case 18: {
               if (!((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
                 customer_ = new java.util.ArrayList<demo.CustomerProtos.Customer>();
                 mutable_bitField0_ |= 0x00000002;
               }
-              customer_.add(input.readMessage(demo.CustomerProtos.Customer.PARSER, extensionRegistry));
-              break;
-            }
-            case 34: {
-              bitField0_ |= 0x00000001;
-              name_ = input.readBytes();
+              customer_.add(
+                  input.readMessage(demo.CustomerProtos.Customer.PARSER, extensionRegistry));
               break;
             }
           }
@@ -1878,7 +2054,7 @@ public final class CustomerProtos {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000002) == 0x00000002)) {
           customer_ = java.util.Collections.unmodifiableList(customer_);
@@ -1892,40 +2068,24 @@ public final class CustomerProtos {
       return demo.CustomerProtos.internal_static_demo_Organization_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return demo.CustomerProtos.internal_static_demo_Organization_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               demo.CustomerProtos.Organization.class, demo.CustomerProtos.Organization.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<Organization> PARSER =
-        new com.google.protobuf.AbstractParser<Organization>() {
-      public Organization parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Organization(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Organization> getParserForType() {
-      return PARSER;
-    }
-
     private int bitField0_;
-    // required string name = 4;
-    public static final int NAME_FIELD_NUMBER = 4;
-    private java.lang.Object name_;
+    public static final int NAME_FIELD_NUMBER = 1;
+    private volatile java.lang.Object name_;
     /**
-     * <code>required string name = 4;</code>
+     * <code>required string name = 1;</code>
      */
     public boolean hasName() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required string name = 4;</code>
+     * <code>required string name = 1;</code>
      */
     public java.lang.String getName() {
       java.lang.Object ref = name_;
@@ -1942,7 +2102,7 @@ public final class CustomerProtos {
       }
     }
     /**
-     * <code>required string name = 4;</code>
+     * <code>required string name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getNameBytes() {
@@ -1958,50 +2118,46 @@ public final class CustomerProtos {
       }
     }
 
-    // repeated .demo.Customer customer = 1;
-    public static final int CUSTOMER_FIELD_NUMBER = 1;
+    public static final int CUSTOMER_FIELD_NUMBER = 2;
     private java.util.List<demo.CustomerProtos.Customer> customer_;
     /**
-     * <code>repeated .demo.Customer customer = 1;</code>
+     * <code>repeated .demo.Customer customer = 2;</code>
      */
     public java.util.List<demo.CustomerProtos.Customer> getCustomerList() {
       return customer_;
     }
     /**
-     * <code>repeated .demo.Customer customer = 1;</code>
+     * <code>repeated .demo.Customer customer = 2;</code>
      */
     public java.util.List<? extends demo.CustomerProtos.CustomerOrBuilder> 
         getCustomerOrBuilderList() {
       return customer_;
     }
     /**
-     * <code>repeated .demo.Customer customer = 1;</code>
+     * <code>repeated .demo.Customer customer = 2;</code>
      */
     public int getCustomerCount() {
       return customer_.size();
     }
     /**
-     * <code>repeated .demo.Customer customer = 1;</code>
+     * <code>repeated .demo.Customer customer = 2;</code>
      */
     public demo.CustomerProtos.Customer getCustomer(int index) {
       return customer_.get(index);
     }
     /**
-     * <code>repeated .demo.Customer customer = 1;</code>
+     * <code>repeated .demo.Customer customer = 2;</code>
      */
     public demo.CustomerProtos.CustomerOrBuilder getCustomerOrBuilder(
         int index) {
       return customer_.get(index);
     }
 
-    private void initFields() {
-      name_ = "";
-      customer_ = java.util.Collections.emptyList();
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
 
       if (!hasName()) {
         memoizedIsInitialized = 0;
@@ -2019,40 +2175,73 @@ public final class CustomerProtos {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
-      for (int i = 0; i < customer_.size(); i++) {
-        output.writeMessage(1, customer_.get(i));
-      }
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(4, getNameBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
       }
-      getUnknownFields().writeTo(output);
+      for (int i = 0; i < customer_.size(); i++) {
+        output.writeMessage(2, customer_.get(i));
+      }
+      unknownFields.writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+      }
       for (int i = 0; i < customer_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, customer_.get(i));
+          .computeMessageSize(2, customer_.get(i));
       }
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(4, getNameBytes());
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
       return size;
     }
 
     private static final long serialVersionUID = 0L;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof demo.CustomerProtos.Organization)) {
+        return super.equals(obj);
+      }
+      demo.CustomerProtos.Organization other = (demo.CustomerProtos.Organization) obj;
+
+      boolean result = true;
+      result = result && (hasName() == other.hasName());
+      if (hasName()) {
+        result = result && getName()
+            .equals(other.getName());
+      }
+      result = result && getCustomerList()
+          .equals(other.getCustomerList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptorForType().hashCode();
+      if (hasName()) {
+        hash = (37 * hash) + NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getName().hashCode();
+      }
+      if (getCustomerCount() > 0) {
+        hash = (37 * hash) + CUSTOMER_FIELD_NUMBER;
+        hash = (53 * hash) + getCustomerList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
     }
 
     public static demo.CustomerProtos.Organization parseFrom(
@@ -2078,46 +2267,57 @@ public final class CustomerProtos {
     }
     public static demo.CustomerProtos.Organization parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static demo.CustomerProtos.Organization parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static demo.CustomerProtos.Organization parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static demo.CustomerProtos.Organization parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static demo.CustomerProtos.Organization parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static demo.CustomerProtos.Organization parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(demo.CustomerProtos.Organization prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(demo.CustomerProtos.Organization prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2125,14 +2325,15 @@ public final class CustomerProtos {
      * Protobuf type {@code demo.Organization}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements demo.CustomerProtos.OrganizationOrBuilder {
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:demo.Organization)
+        demo.CustomerProtos.OrganizationOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
         return demo.CustomerProtos.internal_static_demo_Organization_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return demo.CustomerProtos.internal_static_demo_Organization_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -2145,19 +2346,16 @@ public final class CustomerProtos {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getCustomerFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         name_ = "";
@@ -2169,10 +2367,6 @@ public final class CustomerProtos {
           customerBuilder_.clear();
         }
         return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -2214,6 +2408,32 @@ public final class CustomerProtos {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof demo.CustomerProtos.Organization) {
           return mergeFrom((demo.CustomerProtos.Organization)other);
@@ -2249,25 +2469,24 @@ public final class CustomerProtos {
               customer_ = other.customer_;
               bitField0_ = (bitField0_ & ~0x00000002);
               customerBuilder_ = 
-                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getCustomerFieldBuilder() : null;
             } else {
               customerBuilder_.addAllMessages(other.customer_);
             }
           }
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasName()) {
-          
           return false;
         }
         for (int i = 0; i < getCustomerCount(); i++) {
           if (!getCustomer(i).isInitialized()) {
-            
             return false;
           }
         }
@@ -2283,7 +2502,7 @@ public final class CustomerProtos {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (demo.CustomerProtos.Organization) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -2293,30 +2512,32 @@ public final class CustomerProtos {
       }
       private int bitField0_;
 
-      // required string name = 4;
       private java.lang.Object name_ = "";
       /**
-       * <code>required string name = 4;</code>
+       * <code>required string name = 1;</code>
        */
       public boolean hasName() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required string name = 4;</code>
+       * <code>required string name = 1;</code>
        */
       public java.lang.String getName() {
         java.lang.Object ref = name_;
         if (!(ref instanceof java.lang.String)) {
-          java.lang.String s = ((com.google.protobuf.ByteString) ref)
-              .toStringUtf8();
-          name_ = s;
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            name_ = s;
+          }
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>required string name = 4;</code>
+       * <code>required string name = 1;</code>
        */
       public com.google.protobuf.ByteString
           getNameBytes() {
@@ -2332,7 +2553,7 @@ public final class CustomerProtos {
         }
       }
       /**
-       * <code>required string name = 4;</code>
+       * <code>required string name = 1;</code>
        */
       public Builder setName(
           java.lang.String value) {
@@ -2345,7 +2566,7 @@ public final class CustomerProtos {
         return this;
       }
       /**
-       * <code>required string name = 4;</code>
+       * <code>required string name = 1;</code>
        */
       public Builder clearName() {
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -2354,7 +2575,7 @@ public final class CustomerProtos {
         return this;
       }
       /**
-       * <code>required string name = 4;</code>
+       * <code>required string name = 1;</code>
        */
       public Builder setNameBytes(
           com.google.protobuf.ByteString value) {
@@ -2367,7 +2588,6 @@ public final class CustomerProtos {
         return this;
       }
 
-      // repeated .demo.Customer customer = 1;
       private java.util.List<demo.CustomerProtos.Customer> customer_ =
         java.util.Collections.emptyList();
       private void ensureCustomerIsMutable() {
@@ -2377,11 +2597,11 @@ public final class CustomerProtos {
          }
       }
 
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           demo.CustomerProtos.Customer, demo.CustomerProtos.Customer.Builder, demo.CustomerProtos.CustomerOrBuilder> customerBuilder_;
 
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public java.util.List<demo.CustomerProtos.Customer> getCustomerList() {
         if (customerBuilder_ == null) {
@@ -2391,7 +2611,7 @@ public final class CustomerProtos {
         }
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public int getCustomerCount() {
         if (customerBuilder_ == null) {
@@ -2401,7 +2621,7 @@ public final class CustomerProtos {
         }
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public demo.CustomerProtos.Customer getCustomer(int index) {
         if (customerBuilder_ == null) {
@@ -2411,7 +2631,7 @@ public final class CustomerProtos {
         }
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public Builder setCustomer(
           int index, demo.CustomerProtos.Customer value) {
@@ -2428,7 +2648,7 @@ public final class CustomerProtos {
         return this;
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public Builder setCustomer(
           int index, demo.CustomerProtos.Customer.Builder builderForValue) {
@@ -2442,7 +2662,7 @@ public final class CustomerProtos {
         return this;
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public Builder addCustomer(demo.CustomerProtos.Customer value) {
         if (customerBuilder_ == null) {
@@ -2458,7 +2678,7 @@ public final class CustomerProtos {
         return this;
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public Builder addCustomer(
           int index, demo.CustomerProtos.Customer value) {
@@ -2475,7 +2695,7 @@ public final class CustomerProtos {
         return this;
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public Builder addCustomer(
           demo.CustomerProtos.Customer.Builder builderForValue) {
@@ -2489,7 +2709,7 @@ public final class CustomerProtos {
         return this;
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public Builder addCustomer(
           int index, demo.CustomerProtos.Customer.Builder builderForValue) {
@@ -2503,13 +2723,14 @@ public final class CustomerProtos {
         return this;
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public Builder addAllCustomer(
           java.lang.Iterable<? extends demo.CustomerProtos.Customer> values) {
         if (customerBuilder_ == null) {
           ensureCustomerIsMutable();
-          super.addAll(values, customer_);
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, customer_);
           onChanged();
         } else {
           customerBuilder_.addAllMessages(values);
@@ -2517,7 +2738,7 @@ public final class CustomerProtos {
         return this;
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public Builder clearCustomer() {
         if (customerBuilder_ == null) {
@@ -2530,7 +2751,7 @@ public final class CustomerProtos {
         return this;
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public Builder removeCustomer(int index) {
         if (customerBuilder_ == null) {
@@ -2543,14 +2764,14 @@ public final class CustomerProtos {
         return this;
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public demo.CustomerProtos.Customer.Builder getCustomerBuilder(
           int index) {
         return getCustomerFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public demo.CustomerProtos.CustomerOrBuilder getCustomerOrBuilder(
           int index) {
@@ -2560,7 +2781,7 @@ public final class CustomerProtos {
         }
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public java.util.List<? extends demo.CustomerProtos.CustomerOrBuilder> 
            getCustomerOrBuilderList() {
@@ -2571,14 +2792,14 @@ public final class CustomerProtos {
         }
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public demo.CustomerProtos.Customer.Builder addCustomerBuilder() {
         return getCustomerFieldBuilder().addBuilder(
             demo.CustomerProtos.Customer.getDefaultInstance());
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public demo.CustomerProtos.Customer.Builder addCustomerBuilder(
           int index) {
@@ -2586,17 +2807,17 @@ public final class CustomerProtos {
             index, demo.CustomerProtos.Customer.getDefaultInstance());
       }
       /**
-       * <code>repeated .demo.Customer customer = 1;</code>
+       * <code>repeated .demo.Customer customer = 2;</code>
        */
       public java.util.List<demo.CustomerProtos.Customer.Builder> 
            getCustomerBuilderList() {
         return getCustomerFieldBuilder().getBuilderList();
       }
-      private com.google.protobuf.RepeatedFieldBuilder<
+      private com.google.protobuf.RepeatedFieldBuilderV3<
           demo.CustomerProtos.Customer, demo.CustomerProtos.Customer.Builder, demo.CustomerProtos.CustomerOrBuilder> 
           getCustomerFieldBuilder() {
         if (customerBuilder_ == null) {
-          customerBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+          customerBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               demo.CustomerProtos.Customer, demo.CustomerProtos.Customer.Builder, demo.CustomerProtos.CustomerOrBuilder>(
                   customer_,
                   ((bitField0_ & 0x00000002) == 0x00000002),
@@ -2606,39 +2827,76 @@ public final class CustomerProtos {
         }
         return customerBuilder_;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
 
       // @@protoc_insertion_point(builder_scope:demo.Organization)
     }
 
+    // @@protoc_insertion_point(class_scope:demo.Organization)
+    private static final demo.CustomerProtos.Organization DEFAULT_INSTANCE;
     static {
-      defaultInstance = new Organization(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new demo.CustomerProtos.Organization();
     }
 
-    // @@protoc_insertion_point(class_scope:demo.Organization)
+    public static demo.CustomerProtos.Organization getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<Organization>
+        PARSER = new com.google.protobuf.AbstractParser<Organization>() {
+      public Organization parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+          return new Organization(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<Organization> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Organization> getParserForType() {
+      return PARSER;
+    }
+
+    public demo.CustomerProtos.Organization getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_demo_Customer_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_demo_Customer_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_demo_Customer_EmailAddress_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_demo_Customer_EmailAddress_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_demo_Organization_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_demo_Organization_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static com.google.protobuf.Descriptors.FileDescriptor
+  private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -2647,41 +2905,41 @@ public final class CustomerProtos {
       " \002(\t\022*\n\005email\030\005 \003(\0132\033.demo.Customer.Emai" +
       "lAddress\032S\n\014EmailAddress\022\r\n\005email\030\001 \002(\t\022" +
       "4\n\004type\030\002 \001(\0162\030.demo.Customer.EmailType:" +
-      "\014PROFESSIONAL\"*\n\tEmailType\022\013\n\007PRIVATE\020\000\022" +
-      "\020\n\014PROFESSIONAL\020\001\">\n\014Organization\022\014\n\004nam" +
-      "e\030\004 \002(\t\022 \n\010customer\030\001 \003(\0132\016.demo.Custome" +
+      "\014PROFESSIONAL\"*\n\tEmailType\022\013\n\007PRIVATE\020\001\022" +
+      "\020\n\014PROFESSIONAL\020\002\">\n\014Organization\022\014\n\004nam" +
+      "e\030\001 \002(\t\022 \n\010customer\030\002 \003(\0132\016.demo.Custome" +
       "rB\026\n\004demoB\016CustomerProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-      new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-        public com.google.protobuf.ExtensionRegistry assignDescriptors(
-            com.google.protobuf.Descriptors.FileDescriptor root) {
-          descriptor = root;
-          internal_static_demo_Customer_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_demo_Customer_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_demo_Customer_descriptor,
-              new java.lang.String[] { "Id", "FirstName", "LastName", "Email", });
-          internal_static_demo_Customer_EmailAddress_descriptor =
-            internal_static_demo_Customer_descriptor.getNestedTypes().get(0);
-          internal_static_demo_Customer_EmailAddress_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_demo_Customer_EmailAddress_descriptor,
-              new java.lang.String[] { "Email", "Type", });
-          internal_static_demo_Organization_descriptor =
-            getDescriptor().getMessageTypes().get(1);
-          internal_static_demo_Organization_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_demo_Organization_descriptor,
-              new java.lang.String[] { "Name", "Customer", });
-          return null;
-        }
-      };
+        new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
+          public com.google.protobuf.ExtensionRegistry assignDescriptors(
+              com.google.protobuf.Descriptors.FileDescriptor root) {
+            descriptor = root;
+            return null;
+          }
+        };
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
+    internal_static_demo_Customer_descriptor =
+      getDescriptor().getMessageTypes().get(0);
+    internal_static_demo_Customer_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_demo_Customer_descriptor,
+        new java.lang.String[] { "Id", "FirstName", "LastName", "Email", });
+    internal_static_demo_Customer_EmailAddress_descriptor =
+      internal_static_demo_Customer_descriptor.getNestedTypes().get(0);
+    internal_static_demo_Customer_EmailAddress_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_demo_Customer_EmailAddress_descriptor,
+        new java.lang.String[] { "Email", "Type", });
+    internal_static_demo_Organization_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_demo_Organization_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_demo_Organization_descriptor,
+        new java.lang.String[] { "Name", "Customer", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
